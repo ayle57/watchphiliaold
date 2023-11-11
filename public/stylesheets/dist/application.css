@@ -1,0 +1,18 @@
+/* Error: expected ":".
+ *    ,
+ * 42 | $h1 = 54px;
+ *    |     ^
+ *    '
+ *   public/stylesheets/config/_variables.scss 42:5  @import
+ *   public/stylesheets/application.scss 10:9        root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected ":".\a    \2577 \a 42 \2502  $h1 = 54px;\a    \2502      ^\a    \2575 \a   public/stylesheets/config/_variables.scss 42:5  @import\a   public/stylesheets/application.scss 10:9        root stylesheet';
+}
