@@ -1,0 +1,31 @@
+{
+    "name": "allistair/watchphilia",
+    "description": "A website for watchphilia",
+    "type": "project",
+    "require": {
+        "phroute/phroute": "^2.2",
+        "twig/twig": "^3.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.4",
+        "symfony/var-dumper": "^6.3"
+    },
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Aylé",
+            "email": "107368715+ayle57@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable"
+}
