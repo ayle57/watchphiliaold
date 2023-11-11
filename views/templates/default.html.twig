@@ -5,10 +5,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %}</title>
+    <title>Watchphilia {% block title %}{% endblock %}</title>
+
+    <!-- ====== Link Main CSS File ====== -->
+    <link rel="stylesheet" href="stylesheets/dist/application.css">
+
+    {% block stylesheets %}
+    {% endblock %}
 </head>
 <body>
     {% block body %}
     {% endblock %}
+
+    <!-- ====== Link Main JS File ====== -->
+    <script src="javascripts/main.js"></script>
 </body>
 </html>
