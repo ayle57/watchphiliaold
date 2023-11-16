@@ -1,0 +1,49 @@
+
+{% extends 'templates/admins/nav/default.html.twig' %}
+
+{% block title %}Editer Sections{% endblock %}
+
+{% block section_title %}Editer une Section{% endblock %}
+
+{% block content %}
+    <h2><a href="/admin/sections/"><button class="btn btn-secondary">Retourner aux Sections</button></a></h2>
+    <div class="container">
+        <form action="" method="POST">
+            {% include 'templates/input.twig' with {
+                input_name: 'name',
+                input_placeholder: 'Nouveau nom',
+                input_id: 'name',
+                input_value: section.name
+            } %}
+            {% include 'templates/input.twig' with {
+                input_name: 'min_price',
+                input_placeholder: 'Nouveau prix minimal',
+                input_id: 'min_price',
+                input_value: section.min_price
+            } %}
+            {% include 'templates/input.twig' with {
+                input_name: 'max_price',
+                input_placeholder: 'Nouveau prix maximal',
+                input_id: 'max_price',
+                input_value: section.max_price
+            } %}
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-primary mt-4" name="submit">Mettre à jour</button>
+            </div>
+
+        </form>
+
+        {% if errors %}
+            <ul class="alert alert-danger mt-4 px-5">
+                {% for error in errors %}
+                    <li>
+                        <span class="text-danger">
+                            {{ error }}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}
+

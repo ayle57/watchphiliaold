@@ -1,0 +1,91 @@
+{% extends 'templates/admins/nav/default.html.twig' %}
+
+{% block title %}Montres{% endblock %}
+
+{% block section_title %}Créer une Montre{% endblock %}
+
+{% block content %}
+    <h2><a href="/admin/watches/">
+            <button class="btn btn-secondary">Retourner aux Montres</button>
+        </a></h2>
+    <div class="container">
+        <form action="" method="POST">
+            <div class="row g-3">
+                {% include 'templates/input.twig' with {
+                    input_name: 'name',
+                    input_type: 'text',
+                    input_placeholder: 'Nouveau Nom',
+                    input_id: 'name',
+                    input_value: watch.name,
+                    div_class: 'col-sm-6'
+                } %}
+
+                {% include 'templates/input.twig' with {
+                    input_name: 'identification_number',
+                    input_type: 'text',
+                    input_placeholder: "Nouveau Numéro d'identification",
+                    input_id: 'identification_number',
+                    input_value: watch.identification_number,
+                    div_class: 'col-sm-6'
+                } %}
+
+                <div class="form-group">
+                    <label for="description">Nouvelle Description</label>
+                    <textarea name="description" id="description" cols="10" rows="10" class="form-control" placeholder="Nouvelle description" required>{{ watch.description }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image_url">Nouvelle Image</label>
+                    <input type="text" class="form-control" name="image_url" id="image_url" required value="{{ watch.image_url }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="section">Nouvelle Section</label>
+                    <select name="section" id="section" class="form-control">
+                        <option value="default" {% if watch.section is null %}selected{% endif %}>Option par défaut (ne pas choisir)</option>
+                        {% for section in sections %}
+                            <option value="{{ section.id }}" {% if watch.section == section.id %}selected{% endif %}>{{ section.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="subsection">Nouvelle Sous Section</label>
+                    <select name="subsection" id="subsection" class="form-control">
+                        <option value="default" {% if watch.subsection is null %}selected{% endif %}>Option par défaut (ne pas choisir)</option>
+                        {% for subsection in subsections %}
+                            <option value="{{ subsection.id }}" {% if watch.subsection == subsection.id %}selected{% endif %}>{{ subsection.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="properties">Nouvelles Propriétés</label>
+                    <select name="properties[]" id="properties" class="form-control" multiple>
+                        <option value="default" {% if watch.properties is empty %}selected{% endif %}>Option par défaut (ne pas choisir)</option>
+                        {% for property in properties %}
+                            <option value="{{ property.id }}" {% if property.id in watch.properties %}selected{% endif %}>{{ property.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary mt-4" name="submit">Editer</button>
+                </div>
+            </div>
+        </form>
+
+        {% if errors %}
+            <ul class="alert alert-danger mt-4 px-5">
+                {% for error in errors %}
+                    <li>
+                        <span class="text-danger">
+                            {{ error }}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+{% endblock %}

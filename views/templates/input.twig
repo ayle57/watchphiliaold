@@ -1,0 +1,8 @@
+{% block input_field %}
+    <div class="form-group {{ div_class }}">
+        <label for="{{ input_name }}" }>{{ input_placeholder|capitalize }}</label>
+        <input type="{{ input_type }}" name="{{ input_name }}" id="{{ input_id }}" class="form-control" value="{{ input_value }}"
+               placeholder="{{ input_placeholder|capitalize }}" {% if input_attributes is defined %}{{ input_attributes|join(' ') }}{% endif %}
+                required />
+    </div>
+{% endblock %}

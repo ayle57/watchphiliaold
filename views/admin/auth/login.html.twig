@@ -1,0 +1,34 @@
+
+{% extends 'templates/admins/default.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h2><i class="fa fa-user"></i> Formulaire d'authentification administrateur</h2>
+        <form action="" method="POST">
+            {% include 'templates/input.twig' with {
+                input_name: 'admin_name',
+                input_type: 'text',
+                input_placeholder: 'Nom de l\'admin',
+                input_id: 'admin_name',
+            } %}
+            {% include 'templates/input.twig' with {
+                div_class: 'mt-2',
+                input_name: 'admin_password',
+                input_type: 'password',
+                input_placeholder: 'Mot de passe de l\'admin',
+                input_id: 'admin_password',
+            } %}
+            <div class="form-group mt-4 text-align-center">
+                <button type="submit" name="submit" class="btn btn-primary">
+                    Se connecter
+                </button>
+            </div>
+        </form>
+
+        {% include 'templates/error.twig' %}
+    </div>
+
+{% endblock %}

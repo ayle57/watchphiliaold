@@ -1,0 +1,41 @@
+{% extends 'templates/admins/nav/default.html.twig' %}
+
+{% block title %}Sections{% endblock %}
+
+{% block section_title %}Sections{% endblock %}
+
+{% block content %}
+
+    <h2><a href="/admin/sections/create"><button class="btn btn-secondary">Nouvelle Section</button></a></h2>
+    {% if sections %}
+        <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">nom</th>
+                    <th scope="col">prix minimal</th>
+                    <th scope="col">prix maximal</th>
+                    <th scope="col">modifier</th>
+                    <th scope="col">supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for section in sections %}
+                    <tr>
+                        <td>{{ section.id }}</td>
+                        <td>{{ section.name }}</td>
+                        <td>{{ section.min_price }}€</td>
+                        <td>{{ section.max_price }}€</td>
+                        <td><a href="/admin/sections/edit/{{ section.id }}" class="link text-secondary"><i class="fa fa-pen"></i></a></td>
+                        <td><a href="/admin/sections/delete/{{ section.id }}" class="link text-danger"><i class="fa fa-x"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>Pas de Sous Sections</p>
+    {% endif %}
+
+{% endblock %}

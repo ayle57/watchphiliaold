@@ -1,0 +1,53 @@
+{% extends 'templates/admins/nav/default.html.twig' %}
+
+{% block title %}Montres{% endblock %}
+
+{% block section_title %}Montres{% endblock %}
+
+{% block content %}
+
+    <h2><a href="/admin/watches/create"><button class="btn btn-secondary">Nouvelle Montre</button></a></h2>
+    {% if watches %}
+        <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">nom</th>
+                    <th scope="col">description</th>
+                    <th scope="col">numéro d'identification</th>
+                    <th scope="col">url de l'image</th>
+                    <th scope="col">propriétés</th>
+                    <th scope="col">section</th>
+                    <th scope="col">sous section</th>
+                    <th scope="col">modifier</th>
+                    <th scope="col">supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for watch in watches %}
+                    <tr>
+                        <td>{{ watch.id }}</td>
+                        <td>{{ watch.name }}</td>
+                        <td>{{ watch.description|slice(0, 20) }}</td>
+                        <td>{{ watch.identification_number }}</td>
+                        <td>{{ watch.image_url|slice(0, 20) }}</td>
+                        <td>
+                            {% for property in watch.properties %}
+                                {{ property.name }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ watch.section_name }}</td>
+                        <td>{{ watch.subsection_name }}</td>
+                        <td><i class="fa fa-pen"></i></td>
+                        <td><a href="/admin/watches/delete/{{ watch.id }}" class="link text-danger"><i class="fa fa-x"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>Pas de Montres</p>
+    {% endif %}
+
+{% endblock %}
