@@ -1,18 +1,48 @@
-/* Error: expected ":".
- *    ,
- * 42 | $h1 = 54px;
- *    |     ^
- *    '
- *   public/stylesheets/config/_variables.scss 42:5  @import
- *   public/stylesheets/application.scss 10:9        root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected ":".\a    \2577 \a 42 \2502  $h1 = 54px;\a    \2502      ^\a    \2575 \a   public/stylesheets/config/_variables.scss 42:5  @import\a   public/stylesheets/application.scss 10:9        root stylesheet';
+/**
+  * IDE: PhpStorm
+  * Project: watchphilia
+  * User: allistair
+  * Year: 2023
+*/
+/**
+  * IDE: PhpStorm
+  * Project: watchphilia
+  * User: allistair
+  * Year: 2023
+*/
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/**
+  * IDE: PhpStorm
+  * Project: watchphilia
+  * User: allistair
+  * Year: 2023
+*/
+/**
+  * IDE: PhpStorm
+  * Project: watchphilia
+  * User: allistair
+  * Year: 2023
+*/
+*, ::before, ::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
+
+ul, ol, li {
+  list-style: none;
+}
+
+body {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Overpass";
+  text-decoration: none;
+  text-transform: none;
+  line-height: 1.2;
+  color: #21272a;
+  background: #f8f8f8;
+}
+
+/*# sourceMappingURL=application.css.map */

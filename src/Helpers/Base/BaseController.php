@@ -12,15 +12,14 @@ use App\Dependencies\TwigDependency;
 
 class BaseController
 {
-    private Mixed $twig;
-    public function __construct()
+    private function initTwig()
     {
-        $this->twig = TwigDependency::getTwig();
+        return $twig = TwigDependency::getTwig();
     }
-
-    public function render(String $filename, Array $args = [])
+    public function render(string $filename, array $args = [])
     {
+        $twig = $this->initTwig();
         $filename .= '.html.twig';
-        echo $this->twig->render($filename, $args);
+        echo $twig->render($filename, $args);
     }
 }

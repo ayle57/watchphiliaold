@@ -4,3 +4,27 @@
   * User: allistair
   * Year: 2023
 */
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul, ol, li { list-style: none }
+
+body {
+  font: {
+    size: $font_size;
+    weight: $font_weight;
+    style: $font_style;
+    family: $font_sans;
+  }
+  text: {
+    decoration: $text_decoration;
+    transform: $text_transform;
+  }
+  line-height: $line_height;
+  color: $coolGray-90;
+  background: #f8f8f8;
+}

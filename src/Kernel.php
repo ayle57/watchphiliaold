@@ -9,6 +9,7 @@
 namespace App;
 
 use App\Helpers\Generators\RouteGenerator;
+use App\Helpers\Managers\SessionManager;
 use Phroute\Phroute\{Dispatcher, RouteCollector as Router, RouteParser};
 
 class Kernel
