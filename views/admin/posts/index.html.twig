@@ -1,0 +1,41 @@
+{% extends 'templates/admins/nav/default.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block section_title %}Actualités{% endblock %}
+
+{% block content %}
+
+    <h2><a href="/admin/posts/create"><button class="btn btn-secondary">Nouvelle Actualité</button></a></h2>
+    {% if posts %}
+        <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">titre</th>
+                    <th scope="col">contenu</th>
+                    <th scope="col">date de création</th>
+                    <th scope="col">modifier</th>
+                    <th scope="col">supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.content|raw }}</td>
+                        <td>{{ post.created_at }}</td>
+                        <td><a href="/admin/posts/edit/{{ post.id }}" class="link text-secondary"><i class="fa fa-pen"></i></a></td>
+                        <td><a href="/admin/posts/delete/{{ post.id }}" class="link text-danger"><i class="fa fa-x"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>Pas d'Actualités</p>
+    {% endif %}
+
+{% endblock %}

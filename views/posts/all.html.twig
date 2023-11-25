@@ -1,0 +1,46 @@
+
+{% extends 'templates/users/default.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+
+    {% include 'templates/users/navbar.html.twig' %}
+
+    <main>
+
+        <!-- ====== Home Start ====== -->
+        <section class="section home">
+            <div class="home-inner">
+
+                <div class="posts-container-container">
+                    <div class="posts-container">
+
+                        {% for post in posts %}
+                            <div class="post-item">
+
+                                {% set locale = 'fr_FR' %}
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.content|raw|slice(0, 100) }}<a href="/posts/show/{{ post.id }}">...</a></p>
+                                <small>{{ post.created_at|date('j F Y') }}</small>
+                                <p>
+                                    <a href="/posts/show/{{ post.id }}">En lire plus</a>
+                                </p>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <a href="/" class="link">Retourner à l'accueil</a>
+                </div>
+
+
+                <div class="clocks-container-container"></div>
+
+            </div>
+        </section>
+        <!-- ====== Home End ====== -->
+
+    </main>
+
+{% endblock %}
+

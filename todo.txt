@@ -1,3 +1,0 @@
-FAIRE la méthode edit -> watches et delete -> watches (voir chatgpt)
-FAIRE users (a voir)
-FAIRE UI

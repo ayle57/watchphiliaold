@@ -22,7 +22,7 @@ class LoginController extends BaseController
     {
         $this->loginAction();
 
-        $this->render('admin/auth/login', [
+        $this->render('admin/Auth/Login', [
             'errors' => $this->getInfos()
         ]);
     }

@@ -19,6 +19,9 @@ class Kernel
     private Mixed $response;
     public function create()
     {
+        date_default_timezone_set('Europe/Paris');
+        setlocale(LC_TIME, 'fr_FR.UTF-8', 'fr_FR', 'fr', 'French_France');
+
         $router = new Router(new RouteParser());
         $this->router = $router;
 
@@ -28,7 +31,8 @@ class Kernel
         $dispatcher = new Dispatcher($router->getData());
         $this->dispatcher = $dispatcher;
 
-        $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI'], \PHP_URL_PATH);
+        $locale = 'fr_FR';
+        $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI'], \PHP_URL_PATH, $locale);
         $this->response = $response;
     }
 

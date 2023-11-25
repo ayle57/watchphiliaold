@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin\Watches;
 
 use App\Command\Admin\AuthTrait;
 use App\Helpers\Base\BaseController;
+use App\Helpers\Base\BaseRepository;
 use App\Http\Repository\Admin\Properties\PropertiesRepository;
 use App\Http\Repository\Admin\Sections\SectionsRepository;
 use App\Http\Repository\Admin\SubSections\SubSectionsRepository;
@@ -19,14 +20,15 @@ use App\Validators\Admin\Watches\WatchesValidator;
 class WatchesController extends BaseController
 {
     use AuthTrait;
+
     public function __construct()
     {
         session_start();
-        $this->auth();
     }
 
     public function index()
     {
+        $this->auth();
         $repo = new WatchesRepository();
         $watches = $repo->selectAll('watches', 'id');
 
@@ -39,8 +41,10 @@ class WatchesController extends BaseController
             'watches' => $watches,
         ]);
     }
+
     public function edit($id)
     {
+        $this->auth();
         $repo = new WatchesRepository();
         $watch = $repo->selectOne('watches', 'id', $id);
 
@@ -66,6 +70,7 @@ class WatchesController extends BaseController
 
     public function create()
     {
+        $this->auth();
         $sections_repo = new SectionsRepository();
         $sections = $sections_repo->selectAll('sections', 'id');
 
@@ -87,9 +92,38 @@ class WatchesController extends BaseController
 
     public function delete($id)
     {
+        $this->auth();
         $repo = new WatchesRepository();
         $repo->delete('watches', 'id', $id);
         header('Location: /admin/watches/');
         exit();
+    }
+
+    public function all($filter = null, $value = null)
+    {
+        $base_repo = new BaseRepository();
+
+        if (isset($filter) && isset($value) && !empty($value) && !empty($filter)) {
+            $sql = "SELECT * FROM watches WHERE {$filter} = ?";
+            $req = $base_repo->db->prepare($sql);
+            $req->execute(array($value));
+        } else {
+            $sql = "SELECT * FROM watches";
+            $req = $base_repo->db->query($sql);
+        }
+
+        $watches = $req->fetchAll(\PDO::FETCH_OBJ);
+
+        $sections_repo = new SectionsRepository();
+        $sections = $sections_repo->selectAll('sections', 'id');
+
+        $subsections_repo = new SubSectionsRepository();
+        $subsections = $subsections_repo->selectAll('subsections', 'id');
+
+        $this->render('watches/index', [
+            'watches' => $watches,
+            'sections' => $sections,
+            'subsections' => $subsections
+        ]);
     }
 }

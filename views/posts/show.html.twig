@@ -1,0 +1,22 @@
+{% extends 'templates/users/default.html.twig' %}
+
+{% block title %}Actualité {{ post.id }}{% endblock %}
+
+{% block body %}
+
+    {% include 'templates/users/navbar.html.twig' %}
+
+    <div class="post-container-container">
+        <div class="post-container">
+            <div class="post-item">
+                {% set locale = 'fr_FR' %}
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content|raw }}</p>
+                <small>{{ post.created_at|date('j F Y') }}</small>
+                <p>
+                    <a href="/">Retourner à l'accueil</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

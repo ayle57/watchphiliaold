@@ -1,0 +1,32 @@
+{% extends 'templates/users/default.html.twig' %}
+
+{% block title %}Profil de {{ user.username }}{% endblock %}
+
+{% block body %}
+
+    {% include 'templates/users/navbar.html.twig' %}
+
+    <div class="profil-container">
+
+        <div class="profil-container-infos">
+            <h2>Profil de <span>{{ user.username }}</span></h2>
+            <ul>
+                <li>Prénom: <span>{{ user.firstname }}</span></li>
+                <li>Nom: <span>{{ user.lastname }}</span></li>
+                <li>Adresse Email: <span>{{ user.email }}</span></li>
+                <li>Age: <span>{{ user.age }}</span></li>
+                <li>Numéro de téléphone: <span>{{ user.phone_number }}</span></li>
+                <li>Date de création du compte: <span>{{ user.created_at }}</span></li>
+                <li>Role de l'utilisateur: <span>{{ user.role }}</span></li>
+                <li>
+                    <a href="/profil/edit/{{ user.id }}">Modifier mon profil</a>
+                </li>
+                <li>
+                    <a href="/profil/delete/{{ user.id }}">Supprimer mon compte</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+{% endblock %}

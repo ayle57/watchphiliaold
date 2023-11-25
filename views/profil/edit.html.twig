@@ -1,0 +1,67 @@
+{% extends 'templates/users/default.html.twig' %}
+
+{% block title %}Edition du profil de {{ user.username }}{% endblock %}
+
+{% block body %}
+
+    {% include 'templates/users/navbar.html.twig' %}
+
+    <div class="profil-container-height">
+
+
+        <div class="auth-container">
+            <div class="form-container">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="firstname">Votre prénom</label>
+                        <input type="text" name="firstname" id="firstname" class="form-control"
+                               placeholder="Votre prénom" value="{{ user.firstname }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Votre nom</label>
+                        <input type="text" name="lastname" id="lastname" class="form-control"
+                               placeholder="Votre nom" value="{{ user.lastname }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Votre nom d'utilisateur</label>
+                        <input type="text" name="username" id="username" class="form-control"
+                               placeholder="Votre pseudonyme" value="{{ user.username }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Votre age</label>
+                        <input type="number" name="age" id="age" class="form-control"
+                               placeholder="Votre age" value="{{ user.age }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Votre adresse email</label>
+                        <input type="email" name="email" id="email" class="form-control"
+                               placeholder="Votre adresse email" value="{{ user.email }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Votre numéro de téléphone</label>
+                        <input type="tel" name="phone_number" id="phone_number" class="form-control"
+                               placeholder="Votre numéro de téléphone" value="{{ user.phone_number }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Votre mot de passe</label>
+                        <input type="password" name="password" id="password" class="form-control"
+                               placeholder="Votre mot de passe" value="{{ password }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirmation de votre nouveau mot de passe</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                               class="form-control"
+                               placeholder="Confirmation de votre nouveau mot de passe" value="{{ password_confirmation }}"/>
+                    </div>
+                    <div class="submit-group">
+                        <button type="submit" name="submit" class="btn">Editer votre profil</button>
+                    </div>
+                    {% include 'templates/error.twig' %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -52,14 +52,23 @@ class WatchesRepository extends BaseRepository
     }
 
 
-    public function selectAll($table, $order)
+    public function selectAll($table, $order, $limit = null)
     {
-        $sql = "SELECT w.id, w.name, w.description, w.identification_number, w.image_url, w.section_id, w.subsection_id,
+        if($limit != null) {
+            $sql = "SELECT w.id, w.name, w.description, w.identification_number, w.image_url, w.section_id, w.subsection_id,
+                   s.name AS section_name, ss.name AS subsection_name
+            FROM {$table} w
+            LEFT JOIN sections s ON w.section_id = s.id
+            LEFT JOIN subsections ss ON w.subsection_id = ss.id
+            ORDER BY {$order} LIMIT {$limit}";
+        } else {
+            $sql = "SELECT w.id, w.name, w.description, w.identification_number, w.image_url, w.section_id, w.subsection_id,
                    s.name AS section_name, ss.name AS subsection_name
             FROM {$table} w
             LEFT JOIN sections s ON w.section_id = s.id
             LEFT JOIN subsections ss ON w.subsection_id = ss.id
             ORDER BY {$order}";
+        }
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute();

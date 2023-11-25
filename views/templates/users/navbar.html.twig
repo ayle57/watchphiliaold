@@ -1,0 +1,42 @@
+<!-- ====== Navbar Start ====== -->
+<nav class="navbar">
+
+    <div class="navbar-categories">
+        <a href="/clocks">
+            Montres
+        </a>
+        <a href="/posts" style="margin-left: 15px;">
+            Articles
+        </a>
+    </div>
+    <div class="navbar-brands">
+        <a href="/">
+            <h2>WatchPhilia</h2>
+        </a>
+    </div>
+    <ul class="navbar-links">
+        <li>
+            <a href="/">
+                <i class="fa fa-house"></i>
+            </a>
+        </li>
+        <li>
+            {% if user %}
+                <a href="/profil">
+                    <i class="fa fa-user"></i>
+                </a>
+            {% else %}
+                <a href="/sign-in">
+                    <i class="fa fa-user"></i>
+                </a>
+            {% endif %}
+        </li>
+        <li>
+            <a href="/logout">
+                <i class="fa fa-right-from-bracket"></i>
+            </a>
+        </li>
+    </ul>
+
+</nav>
+<!-- ====== Navbar End ====== -->

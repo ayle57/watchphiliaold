@@ -20,10 +20,14 @@ class BaseRepository
         $this->db = $db->getPdo();
     }
 
-    public function selectAll($table, $order)
+    public function selectAll($table, $order, $limit = null)
     {
         $pdo = $this->db;
-        $stmt = $pdo->prepare("SELECT * FROM {$table} ORDER BY {$order}");
+        if($limit != null) {
+            $stmt = $pdo->prepare("SELECT * FROM {$table} ORDER BY {$order} LIMIT {$limit}");
+        } else {
+            $stmt = $pdo->prepare("SELECT * FROM {$table} ORDER BY {$order}");
+        }
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
@@ -47,8 +51,17 @@ class BaseRepository
     public function delete($table, $condition_key, $condition)
     {
         $pdo = $this->db;
+
+        $stmt = $pdo->prepare("SELECT * FROM {$table} WHERE {$condition_key} = ?");
+        $stmt->execute(array($condition));
+        $recordToDelete = $stmt->fetch(\PDO::FETCH_OBJ);
+
+        $stmt = $pdo->prepare("UPDATE watch_properties SET properties_id = NULL WHERE properties_id = ?");
+        $stmt->execute(array($recordToDelete->id));
+
         $stmt = $pdo->prepare("DELETE FROM {$table} WHERE {$condition_key} = ?");
         $stmt->execute(array($condition));
+
         return true;
     }
 }

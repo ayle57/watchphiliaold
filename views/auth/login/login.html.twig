@@ -1,0 +1,39 @@
+{% extends 'templates/users/default.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="auth-container">
+        <div class="center-container">
+
+            <h2 class="h2">Connexion</h2>
+            <div class="form-container">
+                <!-- ====== Form Start ====== -->
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="email">Votre Adresse Éléctronique*</label>
+                        <input type="email" name="email" id="email" placeholder="Adresse Email" class="form-control"
+                               autocomplete="none" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Votre Mot de Passe*</label>
+                        <input type="password" name="password" id="password" placeholder="Mot de Passe"
+                               class="form-control" autocomplete="none" required/>
+                    </div>
+                    <div class="submit-group">
+                        <button type="submit" name="submit" class="btn">
+                            Se Connecter
+                        </button>
+                    </div>
+                </form>
+                <a href="/sign-up" class="link">Inscription</a>
+                <a href="/" class="link" style="margin-top: 10px">Retourner à l'accueil</a>
+                <!-- ====== Form End ====== -->
+                {% include 'templates/error.twig' %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

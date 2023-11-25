@@ -19,7 +19,8 @@ class LogoutController
 
     private function logoutAction()
     {
-        $manager = new SessionManager();
+        session_start();
+        session_unset();
         session_destroy();
         header('Location: /');
     }

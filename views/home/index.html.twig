@@ -1,10 +1,80 @@
-
 {% extends 'templates/users/default.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
 
-    <h1>Accueil Watchphilia</h1>
+    {% include 'templates/users/navbar.html.twig' %}
+
+    <main>
+
+        <!-- ====== Home Start ====== -->
+        <section class="section home">
+            <div class="home-inner">
+
+                <div class="posts-container-container">
+                    <div class="posts-container">
+
+                        {% for post in posts %}
+                            <div class="post-item">
+
+                                {% set locale = 'fr_FR' %}
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.content|raw|slice(0, 100) }}<a href="/posts/show/{{ post.id }}">...</a></p>
+                                <small>{{ post.created_at|date('j F Y') }}</small>
+                                <p>
+                                    <a href="/posts/show/{{ post.id }}">En lire plus</a>
+                                </p>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <a href="/posts" class="link">Voir tous les articles</a>
+                </div>
+
+
+                <div class="clocks-container-container">
+
+                    <div class="clocks-container">
+
+                        {% for watch in watches %}
+                            <div class="watch-item">
+                                <img src="{{ watch.image_url }}" alt="">
+                                <h3>{{ watch.name }}</h3>
+                                <span>{{ watch.identification_number }}</span>
+                                <p>{{ watch.description|raw|slice(0, 100) }}<a href="/watches/show/{{ watch.id }}">...</a></p>
+
+                                {% if watch.properties is defined %}
+                                    <ul>
+                                        {% for property in watch.properties %}
+                                            <li>{{ property.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+
+                                {% if watch.section_id is defined %}
+                                    <p>Section: {{ watch.section_name }}</p>
+                                {% endif %}
+
+                                {% if watch.subsection_id is defined %}
+                                    <p>Sous-Section: {{ watch.subsection_name }}</p>
+                                {% endif %}
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <a href="/clocks" class="link">Voir toutes les montres</a>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- ====== Home End ====== -->
+
+    </main>
 
 {% endblock %}

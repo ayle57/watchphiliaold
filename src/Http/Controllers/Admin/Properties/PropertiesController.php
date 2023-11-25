@@ -25,7 +25,7 @@ class PropertiesController extends BaseController
     public function index()
     {
         $repo = new PropertiesRepository();
-        $properties = $repo->selectAll('properties', 'id');
+        $properties = $repo->selectAll('properties', 'name');
         $this->render('admin/properties/index', [
             'properties' => $properties
         ]);
