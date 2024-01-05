@@ -1,11 +1,5 @@
-create table subsections
-(
-	id int auto_increment
-		primary key,
-	name varchar(255) null
-);
-
-subsections (id, name) VALUES (6, 'Casual');
+INSERT INTO watchphilia.subsections (id, name) VALUES (5, 'Sporty');
+INSERT INTO watchphilia.subsections (id, name) VALUES (6, 'Casual');
 INSERT INTO watchphilia.subsections (id, name) VALUES (7, 'Dress');
 INSERT INTO watchphilia.subsections (id, name) VALUES (8, ' Diving');
 INSERT INTO watchphilia.subsections (id, name) VALUES (9, 'Casual/Military');

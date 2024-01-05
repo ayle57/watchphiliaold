@@ -1,16 +1,1 @@
-create table users
-(
-	id int auto_increment
-		primary key,
-	firstname varchar(255) null,
-	lastname varchar(255) null,
-	username varchar(255) null,
-	age varchar(255) null,
-	email varchar(255) null,
-	phone_number varchar(20) null,
-	password varchar(255) null,
-	password_confirmation varchar(255) null,
-	role varchar(255) default 'ROLE_USER' null,
-	created_at timestamp default CURRENT_TIMESTAMP null
-);
-
+INSERT INTO watchphilia.users (id, firstname, lastname, username, age, email, phone_number, password, password_confirmation, role, created_at) VALUES (1, null, null, 'samuel', null, null, null, 'fd5d4968db4f41f7ad1ce9f316b22f7e262aefd3', 'fd5d4968db4f41f7ad1ce9f316b22f7e262aefd3', 'ROLE_ADMIN', '2023-11-18 10:08:38');

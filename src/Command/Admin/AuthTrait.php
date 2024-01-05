@@ -27,6 +27,7 @@ trait AuthTrait
 
     public function redirect()
     {
+        session_start();
         if($_SESSION['admin_login'] === 1) {
             header('Location: /admin/');
             exit;
